@@ -2,7 +2,233 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <title>Malak Fahdi | Data Science Po<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
     <title>Malak Fahdi | Data Science Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #a67c52; /* Marron doux */
+            --primary-dark: #8b5e3c; /* Marron plus profond */
+            --bg-body: #fdfbf7; /* Beige très clair */
+            --bg-card: #ffffff; /* Blanc pur */
+            --text-main: #4a3728; /* Marron café pour le texte */
+            --text-muted: #8c7b70;
+            --glass-border: rgba(166, 124, 82, 0.1);
+        }
+
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            margin: 0;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: rgba(253, 251, 247, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- Nouveau Header avec Photo --- */
+        header {
+            background: linear-gradient(135deg, #efeae4 0%, #e2d7cc 100%);
+            color: var(--text-main);
+            padding: 160px 20px 100px;
+            clip-path: ellipse(150% 100% at 50% 0%);
+        }
+
+        .header-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            text-align: left;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            object-fit: cover;
+            animation: fadeInDown 0.8s;
+        }
+
+        .header-text h1 { font-size: 3em; margin: 0; animation: fadeInDown 0.8s; color: var(--primary-dark); }
+        .header-text p { font-size: 1.2em; margin: 10px 0; opacity: 0.9; }
+
+        /* --- Sections et Cartes --- */
+        section { padding: 40px 0; opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        section.visible { opacity: 1; transform: translateY(0); }
+
+        h2 { color: var(--primary-dark); display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ""; flex: 1; height: 1px; background: #e2d7cc; }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(74, 55, 40, 0.05);
+            transition: 0.3s;
+        }
+
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(166, 124, 82, 0.15); }
+
+        /* Bouton CV */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .btn-download:hover { background: var(--primary-dark); transform: scale(1.05); }
+
+        /* Skills */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag {
+            background: #f3eee8; color: var(--primary-dark);
+            padding: 8px 16px; border-radius: 50px; font-size: 0.85em; font-weight: 600;
+        }
+
+        /* Projets */
+        .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 600px) { 
+            .project-grid { grid-template-columns: 1fr; } 
+            .header-flex { text-align: center; flex-direction: column; }
+        }
+
+        .project-card { border-left: 4px solid var(--primary); }
+
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        footer { text-align: center; padding: 40px; color: var(--text-muted); background: #efeae4; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container" style="display:flex; justify-content:center; gap:20px;">
+        <a href="#edu" style="text-decoration:none; color:var(--text-main); font-weight:600;">Éducation</a>
+        <a href="#projects" style="text-decoration:none; color:var(--text-main); font-weight:600;">Projets</a>
+    </div>
+</nav>
+
+<header>
+    <div class="container header-flex">
+        <img src="ma-photo.jpg" alt="Malak Fahdi" class="profile-photo">
+        
+        <div class="header-text">
+            <h1>Malak Fahdi</h1>
+            <p>Étudiante en Data Science & Business Intelligence</p>
+            <a href="CV_Malak_Fahdi.pdf" download class="btn-download" id="cvLink">
+                <i class="fas fa-file-arrow-down"></i> Télécharger mon CV
+            </a>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    
+    <section class="visible" id="contact">
+        <h2><i class="fas fa-link"></i> Liens & Contact</h2>
+        <div class="card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <a href="mailto:malakfadi96@gmail.com" style="text-decoration:none; color:inherit;"><i class="fas fa-envelope" style="color:var(--primary)"></i> malakfadi96@gmail.com</a>
+            <a href="https://github.com/MalakFD" target="_blank" style="text-decoration:none; color:inherit;"><i class="fab fa-github" style="color:var(--primary)"></i> GitHub</a>
+            <a href="https://www.kaggle.com/MalakFahdi" target="_blank" style="text-decoration:none; color:inherit;"><i class="fab fa-kaggle" style="color:var(--primary)"></i> Kaggle</a>
+        </div>
+    </section>
+
+    <section id="edu">
+        <h2><i class="fas fa-graduation-cap"></i> Éducation</h2>
+        <div class="card">
+            <strong style="color:var(--primary)">EST Salé (2024 - Présent)</strong><br>
+            DUT en Data Science & Business Intelligence - 2ème année
+        </div>
+        <div class="card">
+            <strong>Baccalauréat (2024)</strong><br>
+            Sciences Économiques et de Gestion
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2><i class="fas fa-code-branch"></i> Mes Projets</h2>
+        <div class="project-grid">
+            <div class="card project-card">
+                <i class="fab fa-github" style="font-size: 2em; color: var(--primary);"></i>
+                <h3>Analyse PME (Source)</h3>
+                <p>Code source complet de l'analyse marketing des PME marocaines sur GitHub.</p>
+                <a href="https://github.com/MalakFD/marketing-digital-pme" target="_blank" style="color:var(--primary); font-weight:bold;">Voir le dépôt →</a>
+            </div>
+
+            <div class="card project-card">
+                <i class="fab fa-kaggle" style="font-size: 2em; color: #20beff;"></i>
+                <h3>Notebook Kaggle</h3>
+                <p>Visualisations interactives et rapport d'analyse marketing digital pour les PME.</p>
+                <a href="https://www.kaggle.com/code/MalakFD/analyse-marketing-digital-pme-marocaines" target="_blank" style="color:var(--primary); font-weight:bold;">Explorer les données →</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2><i class="fas fa-lightbulb"></i> Compétences</h2>
+        <div class="card">
+            <div class="skills-grid">
+                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">Business Intelligence</span>
+                <span class="skill-tag">Marketing Digital</span>
+                <span class="skill-tag">Facebook Ads</span>
+                <span class="skill-tag">Excel / Power BI</span>
+                <span class="skill-tag">Canva</span>
+                <span class="skill-tag">Python</span>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 – Malak Fahdi <br> <small>Portfolio Data Science & BI</small></p>
+</footer>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('section').forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>rtfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
