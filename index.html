@@ -2,218 +2,358 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Malak Fahdi | CV</title>
+    <title>Malak Fahdi | Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
-            --blue-dark: #1f4e79;
-            --blue-light: #3a7ca5;
-            --gray-light: #f4f6f8;
-            --gray-text: #4a4a4a;
-            --white: #ffffff;
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: rgba(255, 255, 255, 0.8);
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --glass-border: rgba(255, 255, 255, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background-color: var(--gray-light);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            background-image: radial-gradient(circle at top right, #e2e8f0 0%, #f8fafc 100%);
             margin: 0;
-            color: var(--gray-text);
+            color: var(--text-main);
+            line-height: 1.6;
         }
 
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+
+        nav a:hover { color: var(--primary); }
+
+        /* Header */
         header {
-            background: linear-gradient(135deg, var(--blue-dark), var(--blue-light));
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
             color: white;
             text-align: center;
-            padding: 40px 20px;
+            padding: 120px 20px 80px;
+            clip-path: ellipse(150% 100% at 50% 0%);
         }
 
         header h1 {
+            font-size: 3em;
             margin: 0;
-            font-size: 2.5em;
+            letter-spacing: -1px;
+            animation: fadeInDown 0.8s ease-out;
         }
 
         header p {
-            margin-top: 10px;
-            font-size: 1.1em;
+            font-size: 1.2em;
             opacity: 0.9;
+            font-weight: 300;
+            margin-top: 10px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         section {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 20px;
+            padding: 60px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         h2 {
-            color: var(--blue-dark);
-            border-left: 5px solid var(--blue-light);
-            padding-left: 10px;
-            margin-bottom: 20px;
+            font-size: 1.8em;
+            color: var(--primary-dark);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
+        h2::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #cbd5e1;
+        }
+
+        /* Cards */
         .card {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
+            border-color: rgba(37, 99, 235, 0.2);
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
+        /* Skills */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
-        li {
-            margin-bottom: 10px;
+        .skill-tag {
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85em;
+            font-weight: 600;
+            transition: all 0.3s;
         }
 
-        a {
-            color: var(--blue-light);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .skills span {
-            display: inline-block;
-            background: var(--blue-light);
+        .skill-tag:hover {
+            background: var(--primary);
             color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin: 5px;
-            font-size: 0.9em;
+        }
+
+        /* Buttons & Links */
+        .btn-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary);
+            color: white !important;
+            padding: 12px 25px;
+            border-radius: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn-cv:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .contact-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .contact-item:hover { color: var(--primary); }
+        .contact-item i { color: var(--primary); font-size: 1.2em; }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 50px;
+            color: var(--text-muted);
             font-size: 0.9em;
-            color: #777;
         }
 
-        button {
-            background: var(--blue-dark);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1em;
-        }
-
-        button:hover {
-            background: var(--blue-light);
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.2em; }
+            nav .container { gap: 10px; font-size: 0.8em; }
         }
     </style>
 </head>
 
 <body>
 
+<nav>
+    <div class="container">
+        <a href="#about">Contact</a>
+        <a href="#edu">Éducation</a>
+        <a href="#exp">Expérience</a>
+        <a href="#skills">Compétences</a>
+    </div>
+</nav>
+
 <header>
-    <h1>Malak Fahdi</h1>
-    <p>Étudiante en Data Science & Business Intelligence</p>
+    <div class="container">
+        <h1>Malak Fahdi</h1>
+        <p><i class="fas fa-chart-line"></i> Étudiante en Data Science & Business Intelligence</p>
+        <button class="btn-cv" onclick="downloadCV()">
+            <i class="fas fa-file-download"></i> Télécharger mon CV
+        </button>
+    </div>
 </header>
 
-<section>
-    <h2>Liens</h2>
-    <div class="card">
-        <ul>
-            <li>📧 <a href="mailto:malakfadi96@gmail.com">malakfadi96@gmail.com</a></li>
-            <li>💼 <a href="https://www.linkedin.com/in/Malak-Fahdi/" target="_blank">LinkedIn</a></li>
-            <li>💻 <a href="https://github.com/MalakFD" target="_blank">GitHub</a></li>
-            <li>📊 <a href="https://www.kaggle.com/MalakFahdi" target="_blank">Kaggle</a></li>
-            <li>
-                <button onclick="downloadCV()">📄 Télécharger mon CV</button>
-            </li>
-        </ul>
-    </div>
-</section>
-
-<section>
-    <h2>Éducation</h2>
-    <div class="card">
-        <strong>Baccalauréat Sciences Économiques et de Gestion</strong> – 2024<br>
-        Lycée / Établissement
-    </div>
-    <div class="card">
-        <strong>École Supérieure de Technologie – Salé</strong><br>
-        Étudiante en Data Science & Business Intelligence (2ème année – en cours)
-    </div>
-</section>
-
-<section>
-    <h2>Expérience</h2>
-    <div class="card">
-        <strong>Stage – Geo-Conseil Développement Ingénierie (2025)</strong>
-        <ul>
-            <li>Participation aux actions marketing et communication</li>
-            <li>Analyse des services et soutien commercial</li>
-            <li>Découverte du milieu professionnel</li>
-        </ul>
-    </div>
-</section>
-
-<section>
-    <h2>Compétences</h2>
-    <div class="card skills">
-        <span>Marketing Digital</span>
-        <span>Gestion Réseaux Sociaux</span>
-        <span>Création de Contenu</span>
-        <span>Publicité Facebook / Instagram</span>
-        <span>Email Marketing</span>
-        <span>Photographie</span>
-        <span>Canva</span>
-        <span>Excel</span>
-        <span>PowerPoint</span>
-        <span>Google Docs</span>
-    </div>
-</section>
-
-<section>
-    <h2>Langues</h2>
-    <div class="card">
-        Arabe • Français • Anglais
-    </div>
-</section>
-
-<section>
-    <h2>Projets</h2>
-    <div class="card">
-        <ul>
-            <li>
-                <a href="https://github.com/MalakFD/marketing-digital-pme" target="_blank">
-                    📘 Analyse Marketing Digital des PME Marocaines (GitHub)
+<div class="container">
+    
+    <section id="about" class="visible">
+        <h2><i class="fas fa-paper-plane"></i> Contact & Liens</h2>
+        <div class="card">
+            <div class="contact-links">
+                <a href="mailto:malakfadi96@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i> malakfadi96@gmail.com
                 </a>
-            </li>
-            <li>
-                <a href="https://www.kaggle.com/code/MalakFD/analyse-marketing-digital-pme-marocaines" target="_blank">
-                    📊 Analyse Marketing Digital des PME Marocaines (Kaggle)
+                <a href="https://www.linkedin.com/in/Malak-Fahdi/" target="_blank" class="contact-item">
+                    <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
-            </li>
-        </ul>
-    </div>
-</section>
+                <a href="https://github.com/MalakFD" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://www.kaggle.com/MalakFahdi" target="_blank" class="contact-item">
+                    <i class="fab fa-kaggle"></i> Kaggle
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="edu">
+        <h2><i class="fas fa-graduation-cap"></i> Éducation</h2>
+        <div class="card">
+            <h3 style="margin-top:0; color: var(--primary);">EST Salé</h3>
+            <p><strong>Data Science & Business Intelligence</strong><br>
+            <small>2ème année (En cours)</small></p>
+        </div>
+        <div class="card">
+            <h3 style="margin-top:0;">Baccalauréat</h3>
+            <p>Sciences Économiques et de Gestion<br>
+            <small>Promotion 2024</small></p>
+        </div>
+    </section>
+
+    <section id="exp">
+        <h2><i class="fas fa-briefcase"></i> Expérience Professionnelle</h2>
+        <div class="card">
+            <div style="display:flex; justify-content:space-between; align-items: flex-start; flex-wrap: wrap;">
+                <h3 style="margin-top:0;">Stage Marketing & Analyse</h3>
+                <span style="background:#f1f5f9; padding:4px 12px; border-radius:20px; font-size:0.8em;">2025</span>
+            </div>
+            <p style="color:var(--primary); font-weight:600;">Geo-Conseil Développement Ingénierie</p>
+            <ul style="padding-left: 20px; color: var(--text-muted);">
+                <li>Participation active aux stratégies marketing digital.</li>
+                <li>Analyse de données de services pour le soutien commercial.</li>
+                <li>Optimisation de la communication sur les réseaux sociaux.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2><i class="fas fa-laptop-code"></i> Compétences</h2>
+        <div class="card">
+            <div class="skills-grid">
+                <span class="skill-tag">Data Analysis</span>
+                <span class="skill-tag">Python (Notions)</span>
+                <span class="skill-tag">Excel Avancé</span>
+                <span class="skill-tag">Marketing Digital</span>
+                <span class="skill-tag">Canva & Design</span>
+                <span class="skill-tag">Business Intelligence</span>
+                <span class="skill-tag">Publicité FB/IG</span>
+                <span class="skill-tag">PowerPoint</span>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2><i class="fas fa-project-diagram"></i> Projets Récents</h2>
+        <div class="card">
+            <h3 style="margin-top:0;">Analyse Marketing Digital des PME</h3>
+            <p>Étude approfondie de l'impact du digital sur les PME marocaines (GitHub & Kaggle).</p>
+            <div style="display:flex; gap:15px; margin-top:15px;">
+                <a href="https://github.com/MalakFD/marketing-digital-pme" target="_blank" style="color:var(--primary); font-size:0.9em;"><i class="fab fa-github"></i> Code Source</a>
+                <a href="https://www.kaggle.com/code/MalakFD/analyse-marketing-digital-pme-marocaines" target="_blank" style="color:var(--primary); font-size:0.9em;"><i class="fas fa-chart-bar"></i> Voir le Notebook</a>
+            </div>
+        </div>
+    </section>
+
+</div>
 
 <footer>
-    © 2026 – Malak Fahdi
+    <p>© 2026 – Malak Fahdi <br> Propulsé par la passion pour la Data.</p>
 </footer>
 
 <script>
+    // Animation au défilement
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Fonction téléchargement
     function downloadCV() {
-        window.location.href = "CV_Malak_Fahdi.pdf";
+        alert("Le téléchargement du CV va démarrer...");
+        // window.location.href = "CV_Malak_Fahdi.pdf";
     }
 </script>
 
 </body>
 </html>
-
