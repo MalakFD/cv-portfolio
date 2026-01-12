@@ -2,43 +2,34 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Malak Fahdi | Portfolio</title>
+    <title>Malak Fahdi | Data Science Portfolio</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
         :root {
             --primary: #2563eb;
             --primary-dark: #1e40af;
-            --secondary: #64748b;
             --bg-body: #f8fafc;
-            --bg-card: rgba(255, 255, 255, 0.8);
+            --bg-card: rgba(255, 255, 255, 0.9);
             --text-main: #1e293b;
-            --text-muted: #64748b;
-            --glass-border: rgba(255, 255, 255, 0.3);
+            --glass-border: rgba(255, 255, 255, 0.5);
         }
 
-        * {
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--bg-body);
-            background-image: radial-gradient(circle at top right, #e2e8f0 0%, #f8fafc 100%);
+            background: radial-gradient(circle at top right, #e2e8f0 0%, #f8fafc 100%);
             margin: 0;
             color: var(--text-main);
             line-height: 1.6;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
+            top: 0; width: 100%;
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px);
             z-index: 1000;
@@ -46,283 +37,148 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
-        nav .container {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-        }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
 
-        nav a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            font-size: 0.9em;
-            transition: color 0.3s;
-        }
-
-        nav a:hover { color: var(--primary); }
-
-        /* Header */
         header {
             background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
             color: white;
             text-align: center;
-            padding: 120px 20px 80px;
+            padding: 140px 20px 100px;
             clip-path: ellipse(150% 100% at 50% 0%);
         }
 
-        header h1 {
-            font-size: 3em;
-            margin: 0;
-            letter-spacing: -1px;
-            animation: fadeInDown 0.8s ease-out;
-        }
+        header h1 { font-size: 3.5em; margin: 0; animation: fadeInDown 0.8s; }
 
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-            font-weight: 300;
-            margin-top: 10px;
-            animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        }
+        section { padding: 40px 0; opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        section.visible { opacity: 1; transform: translateY(0); }
 
-        /* Layout */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        h2 { color: var(--primary-dark); display: flex; align-items: center; gap: 15px; }
+        h2::after { content: ""; flex: 1; height: 1px; background: #cbd5e1; }
 
-        section {
-            padding: 60px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        h2 {
-            font-size: 1.8em;
-            color: var(--primary-dark);
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        h2::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #cbd5e1;
-        }
-
-        /* Cards */
         .card {
             background: var(--bg-card);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.1);
-            border-color: rgba(37, 99, 235, 0.2);
-        }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(37, 99, 235, 0.15); }
 
-        /* Skills */
-        .skills-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-tag {
-            background: #e0e7ff;
-            color: #4338ca;
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.85em;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .skill-tag:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Buttons & Links */
-        .btn-cv {
+        /* Bouton CV */
+        .btn-download {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            background: var(--primary);
-            color: white !important;
+            background: #ffffff;
+            color: var(--primary);
             padding: 12px 25px;
-            border-radius: 12px;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: transform 0.2s, background 0.3s;
-            margin-top: 15px;
-        }
-
-        .btn-cv:hover {
-            background: var(--primary-dark);
-            transform: scale(1.05);
-        }
-
-        .contact-links {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            border-radius: 50px;
+            font-weight: 700;
             text-decoration: none;
-            color: var(--text-main);
-            font-weight: 500;
-            transition: color 0.3s;
+            margin-top: 20px;
+            transition: 0.3s;
+            border: 2px solid transparent;
         }
 
-        .contact-item:hover { color: var(--primary); }
-        .contact-item i { color: var(--primary); font-size: 1.2em; }
+        .btn-download:hover { background: var(--primary-dark); color: white; transform: scale(1.05); }
 
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Skills */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag {
+            background: #e0e7ff; color: #4338ca;
+            padding: 8px 16px; border-radius: 50px; font-size: 0.85em; font-weight: 600;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Projets */
+        .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        @media (max-width: 600px) { .project-grid { grid-template-columns: 1fr; } }
+
+        .project-card {
+            border-left: 4px solid var(--primary);
         }
 
-        footer {
-            text-align: center;
-            padding: 50px;
-            color: var(--text-muted);
-            font-size: 0.9em;
-        }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
-        @media (max-width: 600px) {
-            header h1 { font-size: 2.2em; }
-            nav .container { gap: 10px; font-size: 0.8em; }
-        }
+        footer { text-align: center; padding: 40px; color: #64748b; }
     </style>
 </head>
-
 <body>
 
 <nav>
-    <div class="container">
-        <a href="#about">Contact</a>
-        <a href="#edu">Éducation</a>
-        <a href="#exp">Expérience</a>
-        <a href="#skills">Compétences</a>
+    <div class="container" style="display:flex; justify-content:center; gap:20px;">
+        <a href="#edu" style="text-decoration:none; color:var(--text-main); font-weight:600;">Éducation</a>
+        <a href="#projects" style="text-decoration:none; color:var(--text-main); font-weight:600;">Projets</a>
     </div>
 </nav>
 
 <header>
     <div class="container">
         <h1>Malak Fahdi</h1>
-        <p><i class="fas fa-chart-line"></i> Étudiante en Data Science & Business Intelligence</p>
-        <button class="btn-cv" onclick="downloadCV()">
-            <i class="fas fa-file-download"></i> Télécharger mon CV
-        </button>
+        <p>Étudiante en Data Science & Business Intelligence</p>
+        <a href="CV_Malak_Fahdi.pdf" download="CV_Malak_Fahdi.pdf" class="btn-download" id="cvLink">
+            <i class="fas fa-file-arrow-down"></i> Télécharger mon CV
+        </a>
     </div>
 </header>
 
 <div class="container">
     
-    <section id="about" class="visible">
-        <h2><i class="fas fa-paper-plane"></i> Contact & Liens</h2>
-        <div class="card">
-            <div class="contact-links">
-                <a href="mailto:malakfadi96@gmail.com" class="contact-item">
-                    <i class="fas fa-envelope"></i> malakfadi96@gmail.com
-                </a>
-                <a href="https://www.linkedin.com/in/Malak-Fahdi/" target="_blank" class="contact-item">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://github.com/MalakFD" target="_blank" class="contact-item">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-                <a href="https://www.kaggle.com/MalakFahdi" target="_blank" class="contact-item">
-                    <i class="fab fa-kaggle"></i> Kaggle
-                </a>
-            </div>
+    <section class="visible" id="contact">
+        <h2><i class="fas fa-link"></i> Liens & Contact</h2>
+        <div class="card" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+            <a href="mailto:malakfadi96@gmail.com" style="text-decoration:none; color:inherit;"><i class="fas fa-envelope text-primary"></i> malakfadi96@gmail.com</a>
+            <a href="https://www.linkedin.com/in/Malak-Fahdi/" target="_blank" style="text-decoration:none; color:inherit;"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/MalakFD" target="_blank" style="text-decoration:none; color:inherit;"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://www.kaggle.com/MalakFahdi" target="_blank" style="text-decoration:none; color:inherit;"><i class="fab fa-kaggle"></i> Kaggle</a>
         </div>
     </section>
 
     <section id="edu">
         <h2><i class="fas fa-graduation-cap"></i> Éducation</h2>
         <div class="card">
-            <h3 style="margin-top:0; color: var(--primary);">EST Salé</h3>
-            <p><strong>Data Science & Business Intelligence</strong><br>
-            <small>2ème année (En cours)</small></p>
+            <strong style="color:var(--primary)">EST Salé (2024 - Présent)</strong><br>
+            DUT en Data Science & Business Intelligence - 2ème année
         </div>
         <div class="card">
-            <h3 style="margin-top:0;">Baccalauréat</h3>
-            <p>Sciences Économiques et de Gestion<br>
-            <small>Promotion 2024</small></p>
+            <strong>Baccalauréat (2024)</strong><br>
+            Sciences Économiques et de Gestion
         </div>
     </section>
 
-    <section id="exp">
-        <h2><i class="fas fa-briefcase"></i> Expérience Professionnelle</h2>
-        <div class="card">
-            <div style="display:flex; justify-content:space-between; align-items: flex-start; flex-wrap: wrap;">
-                <h3 style="margin-top:0;">Stage Marketing & Analyse</h3>
-                <span style="background:#f1f5f9; padding:4px 12px; border-radius:20px; font-size:0.8em;">2025</span>
+    <section id="projects">
+        <h2><i class="fas fa-code-branch"></i> Mes Projets</h2>
+        <div class="project-grid">
+            <div class="card project-card">
+                <i class="fab fa-github" style="font-size: 2em; color: #333;"></i>
+                <h3>Analyse PME (Source)</h3>
+                <p>Code source complet de l'analyse marketing des PME marocaines sur GitHub.</p>
+                <a href="https://github.com/MalakFD/marketing-digital-pme" target="_blank" style="color:var(--primary); font-weight:bold;">Voir le dépôt →</a>
             </div>
-            <p style="color:var(--primary); font-weight:600;">Geo-Conseil Développement Ingénierie</p>
-            <ul style="padding-left: 20px; color: var(--text-muted);">
-                <li>Participation active aux stratégies marketing digital.</li>
-                <li>Analyse de données de services pour le soutien commercial.</li>
-                <li>Optimisation de la communication sur les réseaux sociaux.</li>
-            </ul>
+
+            <div class="card project-card">
+                <i class="fab fa-kaggle" style="font-size: 2em; color: #20beff;"></i>
+                <h3>Notebook Kaggle</h3>
+                <p>Visualisations interactives et rapport d'analyse marketing digital pour les PME.</p>
+                <a href="https://www.kaggle.com/code/MalakFD/analyse-marketing-digital-pme-marocaines" target="_blank" style="color:var(--primary); font-weight:bold;">Explorer les données →</a>
+            </div>
         </div>
     </section>
 
     <section id="skills">
-        <h2><i class="fas fa-laptop-code"></i> Compétences</h2>
+        <h2><i class="fas fa-lightbulb"></i> Compétences</h2>
         <div class="card">
             <div class="skills-grid">
                 <span class="skill-tag">Data Analysis</span>
-                <span class="skill-tag">Python (Notions)</span>
-                <span class="skill-tag">Excel Avancé</span>
-                <span class="skill-tag">Marketing Digital</span>
-                <span class="skill-tag">Canva & Design</span>
                 <span class="skill-tag">Business Intelligence</span>
-                <span class="skill-tag">Publicité FB/IG</span>
-                <span class="skill-tag">PowerPoint</span>
-            </div>
-        </div>
-    </section>
-
-    <section>
-        <h2><i class="fas fa-project-diagram"></i> Projets Récents</h2>
-        <div class="card">
-            <h3 style="margin-top:0;">Analyse Marketing Digital des PME</h3>
-            <p>Étude approfondie de l'impact du digital sur les PME marocaines (GitHub & Kaggle).</p>
-            <div style="display:flex; gap:15px; margin-top:15px;">
-                <a href="https://github.com/MalakFD/marketing-digital-pme" target="_blank" style="color:var(--primary); font-size:0.9em;"><i class="fab fa-github"></i> Code Source</a>
-                <a href="https://www.kaggle.com/code/MalakFD/analyse-marketing-digital-pme-marocaines" target="_blank" style="color:var(--primary); font-size:0.9em;"><i class="fas fa-chart-bar"></i> Voir le Notebook</a>
+                <span class="skill-tag">Marketing Digital</span>
+                <span class="skill-tag">Facebook Ads</span>
+                <span class="skill-tag">Excel / Power BI</span>
+                <span class="skill-tag">Canva</span>
+                <span class="skill-tag">Python</span>
             </div>
         </div>
     </section>
@@ -330,29 +186,24 @@
 </div>
 
 <footer>
-    <p>© 2026 – Malak Fahdi <br> Propulsé par la passion pour la Data.</p>
+    <p>© 2026 – Malak Fahdi <br> <small>Réalisé avec passion</small></p>
 </footer>
 
 <script>
-    // Animation au défilement
-    const observerOptions = { threshold: 0.1 };
+    // Animation au scroll
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
+            if (entry.isIntersecting) entry.target.classList.add('visible');
         });
-    }, observerOptions);
+    }, { threshold: 0.1 });
 
-    document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
+    document.querySelectorAll('section').forEach(s => observer.observe(s));
+
+    // Petite vérification pour le CV
+    document.getElementById('cvLink').addEventListener('click', function(e) {
+        // Comme on est en local, on prévient juste l'utilisateur
+        console.log("Tentative de téléchargement du fichier : CV_Malak_Fahdi.pdf");
     });
-
-    // Fonction téléchargement
-    function downloadCV() {
-        alert("Le téléchargement du CV va démarrer...");
-        // window.location.href = "CV_Malak_Fahdi.pdf";
-    }
 </script>
 
 </body>
